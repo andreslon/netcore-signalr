@@ -4,10 +4,10 @@ EXPOSE 80
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY ["signalr.events/signalr.events.csproj", "signalr.events/"]
-RUN dotnet restore "signalr.events/signalr.events.csproj"
+COPY ["signalr.events.csproj", "./"]
+RUN dotnet restore "./signalr.events.csproj"
 COPY . .
-WORKDIR "/src/signalr.events"
+WORKDIR "/src/."
 RUN dotnet build "signalr.events.csproj" -c Release -o /app
 
 FROM build AS publish
