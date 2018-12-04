@@ -1,5 +1,7 @@
 "use strict";
 
+Object.defineProperty(WebSocket, 'OPEN', { value: 1, });
+
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
 connection.on("ReceiveMessage", function(message) {
