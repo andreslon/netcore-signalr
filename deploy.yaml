@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sinalr-spike
+  name: signalr-spike
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: sinalr-spike
+      app: signalr-spike
   template:
     metadata:
       labels:
-        app: sinalr-spike
+        app: signalr-spike
     spec:
       containers:
-      - name: sinalr-spike
-        image: #{AcrSource}#/sinalr-spike:#{VersionImage}#
+      - name: signalr-spike
+        image: #{AcrSource}#/signalr-spike:#{VersionImage}#
         resources:
           requests:
             cpu: 100m
@@ -28,10 +28,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sinalr-spike
+  name: signalr-spike
 spec:
   type: LoadBalancer
   ports:
   - port: 8080
   selector:
-    app: sinalr-spike
+    app: signalr-spike
